@@ -1,0 +1,12 @@
+# 组合包（bundle）patch 层：在 profile 根之上插入本插件自己的 Loader 行。
+#
+# 该文件供 `plugin_manager install_bundle` / `dsh plugin` 这类“按组合包安装”的
+# 路径使用：安装器读取 package.json 的 dsh.bundle.patch，把这一层叠加到 profile
+# 的空根之上，于是本包被启用。
+#
+# 新增行必须写在 `insert` 之下：顶层的 `- id: <已有行>` 是“按 id 覆盖已有行”的
+# 形式，直接写 id 只会被当作找不到目标行的覆盖而丢弃（loadProfileDirectory 会向
+# stderr 打印警告，而配置保持不变）。
+- insert:
+    - id: account-balance
+      name: dsh-plugin-account-balance

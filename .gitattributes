@@ -1,0 +1,8 @@
+# 仓库内统一 LF；PowerShell 脚本在 Windows 检出为 CRLF（BOM 属内容，不受影响）
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# 二进制
+*.png binary
+*.ico binary
+*.zip binary

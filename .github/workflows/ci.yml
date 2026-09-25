@@ -1,0 +1,27 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # 没有依赖需要安装：bundle 是自包含产物，测试只用 Node 内置模块
+      - name: 语法检查（浏览器半侧 bundle）
+        run: node --check lib/client.js
+
+      - name: 离线冒烟测试
+        run: node test/smoke.cjs

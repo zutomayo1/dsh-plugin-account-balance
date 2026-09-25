@@ -1,0 +1,14 @@
+# 依赖目录：本包没有任何运行时依赖，出现即说明是本地安装留下的
+node_modules/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
