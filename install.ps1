@@ -72,7 +72,7 @@ if ($existing -and $existing.LinkType) {
   Write-Host "目标已是指向 $($existing.Target) 的链接，跳过复制。"
 } else {
   New-Item -ItemType Directory -Force -Path $target | Out-Null
-  foreach ($item in 'package.json', 'cordis.patch.yml', 'README.md', 'README.zh.md', 'LICENSE') {
+  foreach ($item in 'package.json', 'cordis.patch.yml', 'README.md', 'README.en.md', 'LICENSE') {
     $from = Join-Path $source $item
     if (Test-Path $from) { Copy-Item $from (Join-Path $target $item) -Force }
   }
